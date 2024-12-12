@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-indigo-950 rounded-box z-[10] w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -69,12 +69,14 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-4">
         <ThemeController></ThemeController>
-        <a className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-purple-500">
+        <div className="flex flex-col md:flex-row gap-4">
+        <a className="btn bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-950 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
           Login
         </a>
-        <a className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-purple-500">
+        <a className="btn bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-950 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
           Register
         </a>
+        </div>
       </div>
     </div>
   );

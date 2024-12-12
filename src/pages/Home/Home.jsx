@@ -1,9 +1,13 @@
 import Slider from "../../components/Slider/Slider";
+import 'animate.css';
+import TrustedBrands from "../../components/TrustedBrands/TrustedBrands";
+
 
 const Home = () => {
     return (
-        <div  className="w-11/12 mx-auto">
+        <div>
             <Slider></Slider>
+            <TrustedBrands></TrustedBrands>
         </div>
     );
 };
