@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="play-font">
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

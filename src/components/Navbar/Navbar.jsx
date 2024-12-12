@@ -1,29 +1,39 @@
 import React from "react";
 import { TbDeviceGamepad2 } from "react-icons/tb";
 import ThemeController from "../ThemeController.jsx/ThemeController";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to={"/"} className={({ isActive }) =>
-          isActive
-            ? 'text-green-300 font-bold bg-green-700 bg-opacity-50'
-            : 'text-green-500 bg-green-700'
-        }>Home</NavLink>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
+              : "text-[#8d23c2]"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/allgames"} className={({ isActive }) =>
-          isActive
-            ? 'text-green-300 font-bold bg-green-700 bg-opacity-50'
-            : 'text-green-500 bg-green-700'
-        }>All Games</NavLink>
+        <NavLink
+          to={"/allreviews"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
+              : "text-[#8d23c2]"
+          }
+        >
+          All Reviews
+        </NavLink>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 w-11/12 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,18 +59,22 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">
-          <TbDeviceGamepad2 />
+        <Link to={"/"} className="btn btn-ghost text-xl">
+          <TbDeviceGamepad2 className="text-purple-400 text-2xl" />
           Chill Gamer
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
         <ThemeController></ThemeController>
-        <a className="btn">Button</a>
-        <a className="btn">Button</a>
+        <a className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-purple-500">
+          Login
+        </a>
+        <a className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-purple-500">
+          Register
+        </a>
       </div>
     </div>
   );
