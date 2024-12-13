@@ -121,7 +121,7 @@ const Slider = () => {
               backgroundPosition:"center",
             }}
           >
-            <div className="text-center ">
+            <div className="text-center">
               <h2 className="text-2xl md:text-5xl text-violet-500 font-bold  animate__animated animate__slideInLeft">
                 The Witcher 3: Wild Hunt
               </h2>

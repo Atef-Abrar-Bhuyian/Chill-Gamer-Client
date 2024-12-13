@@ -7,6 +7,7 @@ import ClickSphere from "../../assets/logos/interaction.png"
 import PacXpress from "../../assets/logos/pacman.png"
 import NextGenResearch from "../../assets/logos/research.png"
 import { useInView } from 'react-intersection-observer';
+import { Fade } from "react-awesome-reveal"
 
 const TrustedBrands = () => {
     const { ref, inView } = useInView({
@@ -15,8 +16,8 @@ const TrustedBrands = () => {
 
   return (
     <div className="text-white mt-10 mb-10 p-10 bg-white w-4/5 mx-auto rounded-t-3xl bg-gradient-to-b from-purple-950 to-slate-900 ">
-      <h1 ref={ref} className={`text-3xl md:text-4xl font-bold w-3/4 mx-auto text-center ${inView ? "animate__animated animate__flipInX": ""}`}>
-        Trusted by 7,000+ world-class brands
+      <h1 className="text-3xl md:text-4xl font-bold w-3/4 mx-auto text-center">
+        <Fade>Trusted by 7,000+ world-class brands</Fade>
       </h1>
       <div ref={ref} className="grid grid-cols-2 gap-6 md:grid-cols-4 mt-10">
         <div className={`flex gap-3 items-center justify-center cursor-pointer grayscale hover:grayscale-0 ${inView ? "animate__animated animate__fadeInUp": ""}`}>
