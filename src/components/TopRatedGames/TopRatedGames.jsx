@@ -1,14 +1,10 @@
 import { Fade } from "react-awesome-reveal";
-import { useInView } from "react-intersection-observer";
 
 const TopRatedGames = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-  });
+  
   return (
     <div className="w-11/12 mx-auto my-10">
       <h1
-
         className="text-3xl md:text-4xl font-bold w-3/4 mx-auto text-center"
       >
         <Fade>Top-Rated Games</Fade>
