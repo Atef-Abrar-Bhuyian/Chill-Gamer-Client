@@ -70,10 +70,10 @@ const Navbar = () => {
       <div className="navbar-end gap-4">
         <ThemeController></ThemeController>
         <div className="flex flex-col md:flex-row gap-4">
-        <a className="btn bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-950 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
+        <a className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
           Login
         </a>
-        <a className="btn bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-950 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
+        <a className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
           Register
         </a>
         </div>
