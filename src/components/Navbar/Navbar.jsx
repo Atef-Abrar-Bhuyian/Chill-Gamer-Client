@@ -37,7 +37,7 @@ const Navbar = () => {
       {user && (
         <li>
           <NavLink
-            to={"/"}
+            to={"/addreview"}
             className={({ isActive }) =>
               isActive
                 ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
@@ -52,7 +52,7 @@ const Navbar = () => {
       {user && (
         <li>
           <NavLink
-            to={"/"}
+            to={"/myreviews"}
             className={({ isActive }) =>
               isActive
                 ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
@@ -66,7 +66,7 @@ const Navbar = () => {
       {user && (
         <li>
           <NavLink
-            to={"/"}
+            to={"/mywatchlist"}
             className={({ isActive }) =>
               isActive
                 ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
