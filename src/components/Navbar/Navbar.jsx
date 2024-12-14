@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TbDeviceGamepad2 } from "react-icons/tb";
 import ThemeController from "../ThemeController.jsx/ThemeController";
 import { Link, NavLink } from "react-router-dom";
+import { authContext } from "../AuthProvider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
+  const { user, handleLogOut } = useContext(authContext);
   const links = (
     <>
       <li>
@@ -30,10 +33,55 @@ const Navbar = () => {
           All Reviews
         </NavLink>
       </li>
+
+      {user && (
+        <li>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
+                : "text-[#8d23c2]"
+            }
+          >
+            Add Review
+          </NavLink>
+        </li>
+      )}
+
+      {user && (
+        <li>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
+                : "text-[#8d23c2]"
+            }
+          >
+            My Reviews
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#c040ff] font-bold hover:transition hover:duration-100 hover:underline"
+                : "text-[#8d23c2]"
+            }
+          >
+            Game WatchList
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
     <div className="navbar bg-base-100 w-11/12 mx-auto">
+      <Tooltip id="profile-tooltip" />
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -69,13 +117,48 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-4">
         <ThemeController></ThemeController>
-        <div className="flex flex-col md:flex-row gap-4">
-        <a className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
-          Login
-        </a>
-        <a className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
-          Register
-        </a>
+        <div className="">
+          {user ? (
+            <div className="flex flex-col items-center justify-center gap-1">
+              <div className="flex gap-2 items-center">
+                {/* Image */}
+                <div className="avatar online">
+                  <div className="w-12 rounded-full">
+                    <Link
+                      to="/profile"
+                      data-tooltip-id="profile-tooltip"
+                      data-tooltip-content={user.displayName}
+                    >
+                      <img referrerPolicy="no-referrer" src={user.photoURL} />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Logout btn */}
+                <button
+                  onClick={handleLogOut}
+                  className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col md:flex-row gap-4">
+              <Link
+                to={"/login"}
+                className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white"
+              >
+                Login
+              </Link>
+              <Link
+                to={"/register"}
+                className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

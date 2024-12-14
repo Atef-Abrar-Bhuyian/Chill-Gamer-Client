@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { useState } from "react"
 import { useLoaderData } from "react-router-dom";
 
 
