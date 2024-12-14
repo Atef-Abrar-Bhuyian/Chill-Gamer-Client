@@ -18,7 +18,7 @@ import lastofus from "../../assets/images/lastofus.jpg";
 
 const Slider = () => {
   return (
-    <div className="">
+    <div className="w-11/12 mx-auto">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
