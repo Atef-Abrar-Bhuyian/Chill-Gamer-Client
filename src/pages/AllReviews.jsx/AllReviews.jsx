@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Fade } from "react-awesome-reveal";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -11,8 +12,8 @@ const AllReviews = () => {
         <h2 className="text-center font-bold text-3xl md:text-5xl p-12 text-white animate__animated animate__flash">All Reviews</h2>
       </div>
 
-      {/* <Fade> */}
-      <div className="grid md:grid-cols-3 gap-6 w-4/5 mx-auto mt-10 animate__animated animate__fadeInUp">
+      <Fade delay={1000}>
+      <div className="grid md:grid-cols-3 gap-6 w-4/5 mx-auto mt-10 ">
         {showAllGames.map((game) => (
           <div
             key={game._id}
@@ -25,7 +26,7 @@ const AllReviews = () => {
               <h2 className="card-title">{game.title}</h2>
               <div className="md:flex items-center justify-between">
               <p>Rating: {game.rating}/10 </p>
-              <p>Release date: {game.year}</p>
+              <p>Release Year: {game.year}</p>
               </div>
               <p>Genre: {game.genre}</p>
               
@@ -38,7 +39,7 @@ const AllReviews = () => {
           </div>
         ))}
       </div>
-      {/* </Fade> */}
+      </Fade>
     </div>
   );
 };
