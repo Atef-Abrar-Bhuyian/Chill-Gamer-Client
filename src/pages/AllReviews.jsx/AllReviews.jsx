@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Fade } from "react-awesome-reveal";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const AllReviews = () => {
@@ -29,11 +29,11 @@ const AllReviews = () => {
               <p>Release Year: {game.year}</p>
               </div>
               <p>Genre: {game.genre}</p>
-              
-
+                <Link to={`/reviewdetails/${game._id}`}>
                 <button className="mt-4 btn bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-950 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
                   Explore Details
                 </button>
+                </Link>
 
             </div>
           </div>

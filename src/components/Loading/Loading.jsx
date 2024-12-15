@@ -7,7 +7,7 @@ const Loading = () => {
         visible={true}
         height="80"
         width="80"
-        color="pink"
+        color="purple"
         ariaLabel="triangle-loading"
         wrapperStyle={{}}
         wrapperClass=""

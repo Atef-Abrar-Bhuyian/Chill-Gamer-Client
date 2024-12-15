@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const TopRatedGames = () => {
   const loadedTopGames = useLoaderData();
@@ -22,16 +22,15 @@ const TopRatedGames = () => {
             <div className="card-body">
               <h2 className="card-title">{game.title}</h2>
               <div className="md:flex items-center justify-between">
-              <p>Rating: {game.rating}/10 </p>
-              <p>Release date: {game.year}</p>
+                <p>Rating: {game.rating}/10 </p>
+                <p>Release date: {game.year}</p>
               </div>
               <p>Genre: {game.genre}</p>
-              
-
+              <Link to={`/reviewdetails/${game._id}`}>
                 <button className="mt-4 btn bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-950 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
                   Explore Details
                 </button>
-
+              </Link>
             </div>
           </div>
         ))}
