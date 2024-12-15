@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { authContext } from "../../components/AuthProvider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddReview = () => {
-  const { user } = useContext(authContext);
+const UpdateGameReview = () => {
+  const game = useLoaderData();
 
-  const handleReviewSubmit = (e) => {
+  const handleUpdateGame = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -15,24 +14,22 @@ const AddReview = () => {
     const rating = form.rating.value;
     const year = form.year.value;
     const genre = form.genre.value;
-    const email = form.email.value;
-    const name = form.name.value;
-    const newGame = { image, title, review, rating, year, genre, email, name };
+    const updatedGame = { image, title, review, rating, year, genre };
 
     // Send data to the server
-    fetch("http://localhost:5000/games", {
-      method: "POST",
+    fetch(`http://localhost:5000/games/${game._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newGame),
+      body: JSON.stringify(updatedGame),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           Swal.fire({
             title: "Success!",
-            text: "Game Added Successfully",
+            text: "Game Update Successfully",
             icon: "success",
             confirmButtonText: "Cool",
             background: "#330066",
@@ -42,19 +39,20 @@ const AddReview = () => {
         }
       });
   };
+
   return (
     <div>
       {/* Heading */}
       <div className="bg-gradient-to-l from-purple-900 via-violet-950 to-purple-950 p-12">
         <h2 className="text-center font-bold text-3xl md:text-5xl  text-white animate__animated animate__flash">
-          Add a Game Reivew
+          Update Review
         </h2>
       </div>
 
-      {/* Add Review Form */}
+      {/* Update Review Form */}
       <div className="flex items-center justify-center">
         <div className="card bg-base-100 md:w-1/2 w-4/5 shadow-purple-600 shadow-md my-10">
-          <form onSubmit={handleReviewSubmit} className="card-body">
+          <form onSubmit={handleUpdateGame} className="card-body">
             <div className="md:flex justify-between gap-20 animate__animated animate__fadeInLeft">
               <div className="form-control w-full">
                 <label className="label">
@@ -62,7 +60,7 @@ const AddReview = () => {
                 </label>
                 <input
                   type="text"
-                  defaultValue={user.email}
+                  defaultValue={game.email}
                   name="email"
                   className="input input-bordered"
                   readOnly
@@ -75,7 +73,7 @@ const AddReview = () => {
                 </label>
                 <input
                   type="text"
-                  defaultValue={user.displayName}
+                  defaultValue={game.name}
                   name="name"
                   className="input input-bordered"
                   readOnly
@@ -90,7 +88,7 @@ const AddReview = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Photo URL"
+                  defaultValue={game.image}
                   name="image"
                   className="input input-bordered"
                   required
@@ -102,7 +100,7 @@ const AddReview = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="title"
+                  defaultValue={game.title}
                   name="title"
                   className="input input-bordered"
                   required
@@ -116,7 +114,7 @@ const AddReview = () => {
               </label>
               <input
                 type="text"
-                placeholder="review"
+                defaultValue={game.review}
                 name="review"
                 className="input input-bordered"
                 required
@@ -130,7 +128,7 @@ const AddReview = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="rate 1-10"
+                  defaultValue={game.rating}
                   name="rating"
                   className="input input-bordered"
                   required
@@ -143,7 +141,7 @@ const AddReview = () => {
                 </label>
                 <input
                   type="number"
-                  placeholder="year"
+                  defaultValue={game.year}
                   name="year"
                   className="input input-bordered"
                   required
@@ -170,10 +168,9 @@ const AddReview = () => {
                 <option value="Adventure">Adventure</option>
               </select>
             </div>
-
             <div className="form-control mt-6">
               <button className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white">
-                Submit
+                Update
               </button>
             </div>
           </form>
@@ -183,4 +180,4 @@ const AddReview = () => {
   );
 };
 
-export default AddReview;
+export default UpdateGameReview;

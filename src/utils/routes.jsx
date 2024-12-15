@@ -9,6 +9,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import AddReview from "../pages/AddReview/AddReview";
 import MyReviews from "../pages/MyReviews/MyReviews";
 import Watchlist from "../pages/Watchlist/Watchlist";
+import UpdateGameReview from "../pages/UpdateGameReview/UpdateGameReview";
 
 const routes = createBrowserRouter([
   {
@@ -52,6 +53,13 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("http://localhost:5000/games"),
+      },
+      {
+        path: "/updategame/:id",
+        element: (
+          <PrivateRoute><UpdateGameReview></UpdateGameReview></PrivateRoute>
+        ),
+        loader: ({params}) => fetch(`http://localhost:5000/games/${params.id}`),
       },
       {
         path: "/mywatchlist",
