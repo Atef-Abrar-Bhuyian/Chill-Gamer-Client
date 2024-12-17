@@ -129,7 +129,7 @@ const AddReview = () => {
                   <span className="label-text">Rating</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="rate 1-10"
                   name="rating"
                   className="input input-bordered"

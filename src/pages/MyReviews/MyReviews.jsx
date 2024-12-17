@@ -58,60 +58,75 @@ const MyReviews = () => {
       <Fade delay={500}>
         <div className="w-11/12 md:w-4/5 mx-auto my-10">
           <div className="overflow-x-auto rounded-xl shadow shadow-purple-600">
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>Game Information</th>
-                  <th className="hidden md:block">Reviewed By</th>
-                  <th>Rating</th>
-                  <th></th>
-                </tr>
-              </thead>
-              {userGames.map((game) => (
-                <tbody key={game._id}>
-                  {/* row 1 */}
-                  <tr>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle h-20 w-20">
-                            <img src={game.image} alt={game.title} />
+            {userGames.length > 0 ? (
+              <>
+                <Fade delay={300}>
+                <table className="table">
+                  {/* head */}
+                  <thead>
+                    <tr>
+                      <th>Game Information</th>
+                      <th className="hidden md:block">Reviewed By</th>
+                      <th>Rating</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  {userGames.map((game) => (
+                    <tbody key={game._id}>
+                      {/* row 1 */}
+                      <tr>
+                        <td>
+                          <div className="flex items-center gap-3">
+                            <div className="avatar">
+                              <div className="mask mask-squircle h-20 w-20">
+                                <img src={game.image} alt={game.title} />
+                              </div>
+                            </div>
+                            <div>
+                              <div className="font-bold">{game.title}</div>
+                              <div className="text-sm opacity-50">
+                                Genre: {game.genre}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{game.title}</div>
-                          <div className="text-sm opacity-50">
-                            Genre: {game.genre}
+                        </td>
+                        <td className="hidden md:block">
+                          {game.name}
+                          <br />
+                          <span>{game.email}</span>
+                        </td>
+                        <td>{game.rating}/10</td>
+                        <th>
+                          <div className="flex flex-col gap-2 items-center justify-center">
+                            <Link to={`/updategame/${game._id}`}>
+                              <button className="w-16 btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white btn-xs">
+                                Edit
+                              </button>
+                            </Link>
+                            <button
+                              onClick={() => handleDeleteGame(game._id)}
+                              className="w-16 btn bg-gradient-to-r from-rose-600 to-red-400 shadow-rose-500 shadow-md text-white border-purple-500 hover:border-white btn-xs"
+                            >
+                              <MdDeleteForever className="text-xl" />
+                            </button>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="hidden md:block">
-                      {game.name}
-                      <br />
-                      <span>{game.email}</span>
-                    </td>
-                    <td>{game.rating}/10</td>
-                    <th>
-                      <div className="flex flex-col gap-2 items-center justify-center">
-                        <Link to={`/updategame/${game._id}`}>
-                          <button className="w-16 btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white btn-xs">
-                            Edit
-                          </button>
-                        </Link>
-                        <button
-                          onClick={() => handleDeleteGame(game._id)}
-                          className="w-16 btn bg-gradient-to-r from-rose-600 to-red-400 shadow-rose-500 shadow-md text-white border-purple-500 hover:border-white btn-xs"
-                        >
-                          <MdDeleteForever className="text-xl" />
-                        </button>
-                      </div>
-                    </th>
-                  </tr>
-                </tbody>
-              ))}
-            </table>
+                        </th>
+                      </tr>
+                    </tbody>
+                  ))}
+                </table>
+                </Fade>
+              </>
+            ) : (
+              <div className="text-center p-6 space-y-2">
+                <Fade delay={300}>
+                  <h1 className="text-3xl font-bold">No Reviews Yet</h1>
+                  <p className="text-sm italic">
+                    Your Adventure Awaits, Share It !
+                  </p>
+                </Fade>
+              </div>
+            )}
           </div>
         </div>
       </Fade>
