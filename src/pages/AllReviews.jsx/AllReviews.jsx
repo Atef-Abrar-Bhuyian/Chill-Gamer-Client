@@ -17,25 +17,25 @@ const AllReviews = () => {
 
   const handleSort = (value) => {
     if (value === "newest") {
-      fetch("http://localhost:5000/games/newest")
+      fetch("https://chill-gamer-server-ashen.vercel.app/games/newest")
         .then((res) => res.json())
         .then((data) => {
           setShowAllGames(data);
         });
     } else if (value === "oldest") {
-      fetch("http://localhost:5000/games/oldest")
+      fetch("https://chill-gamer-server-ashen.vercel.app/games/oldest")
         .then((res) => res.json())
         .then((data) => {
           setShowAllGames(data);
         });
     } else if (value === "hrating") {
-      fetch("http://localhost:5000/games/hrating")
+      fetch("https://chill-gamer-server-ashen.vercel.app/games/hrating")
         .then((res) => res.json())
         .then((data) => {
           setShowAllGames(data);
         });
     } else if (value === "lrating") {
-      fetch("http://localhost:5000/games/lrating")
+      fetch("https://chill-gamer-server-ashen.vercel.app/games/lrating")
         .then((res) => res.json())
         .then((data) => {
           setShowAllGames(data);

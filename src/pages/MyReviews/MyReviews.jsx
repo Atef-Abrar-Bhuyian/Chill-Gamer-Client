@@ -26,7 +26,7 @@ const MyReviews = () => {
       color: "#fff",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/games/${_id}`, {
+        fetch(`https://chill-gamer-server-ashen.vercel.app/games/${_id}`, {
           method: "Delete",
         })
           .then((res) => res.json())
@@ -99,7 +99,7 @@ const MyReviews = () => {
                           <div className="flex flex-col gap-2 items-center justify-center">
                             <Link to={`/updategame/${game._id}`}>
                               <button className="w-16 btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white btn-xs">
-                                Edit
+                                Update
                               </button>
                             </Link>
                             <button

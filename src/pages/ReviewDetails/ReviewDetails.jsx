@@ -26,22 +26,21 @@ const ReviewDetails = () => {
     currentUserName,
   };
 
-
   useEffect(() => {
-    fetch("http://localhost:5000/wishlist")
+    fetch("https://chill-gamer-server-ashen.vercel.app/wishlist")
       .then((res) => res.json())
       .then((data) => {
-        const checkGame = data.find(g => g.title === game.title && g.currentUser === user?.email)
-        if(checkGame){
+        const checkGame = data.find(
+          (g) => g.title === game.title && g.currentUser === user?.email
+        );
+        if (checkGame) {
           setWishlistAdded(true);
         }
       });
+  }, [user, game]);
 
-  },[user,game]);
-
-  
   const handleAddToWishlist = () => {
-    fetch("http://localhost:5000/wishlist", {
+    fetch("https://chill-gamer-server-ashen.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

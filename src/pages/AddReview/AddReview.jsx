@@ -20,7 +20,7 @@ const AddReview = () => {
     const newGame = { image, title, review, rating, year, genre, email, name };
 
     // Send data to the server
-    fetch("http://localhost:5000/games", {
+    fetch("https://chill-gamer-server-ashen.vercel.app/games", {
       method: "POST",
       headers: {
         "content-type": "application/json",

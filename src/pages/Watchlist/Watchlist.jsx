@@ -28,7 +28,7 @@ const Watchlist = () => {
         color: "#fff",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/wishlist/${_id}`, {
+          fetch(`https://chill-gamer-server-ashen.vercel.app/wishlist/${_id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

@@ -73,14 +73,14 @@ const Navbar = () => {
                 : "text-[#8d23c2]"
             }
           >
-            Game WatchList
+            Game Wishlist
           </NavLink>
         </li>
       )}
     </>
   );
   return (
-    <div className="navbar bg-base-100 w-11/12 mx-auto">
+    <div className="navbar bg-base-100 md:w-11/12 mx-auto">
       <Tooltip id="profile-tooltip" />
       <div className="navbar-start">
         <div className="dropdown">
@@ -116,7 +116,10 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
-        <ThemeController></ThemeController>
+        <div>
+          <ThemeController></ThemeController>
+        </div>
+
         <div className="">
           {user ? (
             <div className="flex flex-col items-center justify-center gap-1">
@@ -128,16 +131,19 @@ const Navbar = () => {
                     data-tooltip-content={user.displayName}
                     className="w-12 rounded-full"
                   >
-                    <img className="cursor-pointer" referrerPolicy="no-referrer" src={user.photoURL} />
+                    <img
+                      className="cursor-pointer"
+                      referrerPolicy="no-referrer"
+                      src={user.photoURL}
+                    />
                   </div>
                 </div>
 
                 {/* Logout btn */}
                 <Link
-                to={"/"}
+                  to={"/"}
                   onClick={handleLogOut}
-
-                  className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white"
+                  className="btn p-2 md:p-4 bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white"
                 >
                   Logout
                 </Link>

@@ -22,18 +22,18 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/topgames"),
+        loader: () => fetch("https://chill-gamer-server-ashen.vercel.app/topgames"),
       },
       {
         path: "/allreviews",
         element: <AllReviews></AllReviews>,
-        loader: () => fetch("http://localhost:5000/games"),
+        loader: () => fetch("https://chill-gamer-server-ashen.vercel.app/games"),
       },
       {
         path: "/reviewdetails/:id",
         element: <ReviewDetails></ReviewDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/games/${params.id}`),
+          fetch(`https://chill-gamer-server-ashen.vercel.app/games/${params.id}`),
       },
       {
         path: "/login",
@@ -60,7 +60,7 @@ const routes = createBrowserRouter([
             <MyReviews></MyReviews>{" "}
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/games"),
+        loader: () => fetch("https://chill-gamer-server-ashen.vercel.app/games"),
       },
       {
         path: "/updategame/:id",
@@ -70,7 +70,7 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/games/${params.id}`),
+          fetch(`https://chill-gamer-server-ashen.vercel.app/games/${params.id}`),
       },
       {
         path: "/mywatchlist",
@@ -80,7 +80,7 @@ const routes = createBrowserRouter([
             <Watchlist></Watchlist>{" "}
           </PrivateRoute>
         ),
-        loader: ()=> fetch("http://localhost:5000/wishlist")
+        loader: ()=> fetch("https://chill-gamer-server-ashen.vercel.app/wishlist")
       },
     ],
   },

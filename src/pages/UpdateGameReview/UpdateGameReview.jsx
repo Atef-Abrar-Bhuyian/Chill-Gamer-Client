@@ -17,7 +17,7 @@ const UpdateGameReview = () => {
     const updatedGame = { image, title, review, rating, year, genre };
 
     // Send data to the server
-    fetch(`http://localhost:5000/games/${game._id}`, {
+    fetch(`https://chill-gamer-server-ashen.vercel.app/games/${game._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
