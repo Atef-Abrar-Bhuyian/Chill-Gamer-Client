@@ -73,7 +73,7 @@ const Navbar = () => {
                 : "text-[#8d23c2]"
             }
           >
-            Game Wishlist
+            My Wishlist
           </NavLink>
         </li>
       )}
