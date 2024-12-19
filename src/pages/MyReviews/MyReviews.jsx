@@ -68,7 +68,6 @@ const MyReviews = () => {
                       <th>Game Information</th>
                       <th className="hidden md:block">Reviewed By</th>
                       <th>Rating</th>
-                      <th></th>
                     </tr>
                   </thead>
                   {userGames.map((game) => (

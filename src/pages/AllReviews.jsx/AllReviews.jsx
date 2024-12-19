@@ -90,7 +90,7 @@ const AllReviews = () => {
               key={game._id}
               className="card bg-gradient-to-b from-purple-950 to-gray-950 hover:border hover:border-purple-700 hover:shadow-purple-500 hover:shadow-md cursor-pointer text-white"
             >
-              <figure className="">
+              <figure>
                 <img src={game.image} alt={game.title} />
               </figure>
               <div className="card-body">

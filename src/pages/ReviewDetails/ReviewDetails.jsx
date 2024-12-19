@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa6";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { authContext } from "../../components/AuthProvider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
@@ -10,11 +10,11 @@ const ReviewDetails = () => {
   const { user } = useContext(authContext);
   const currentUser = user?.email;
   const currentUserName = user?.displayName;
-
+  const [wishlistAdded, setWishlistAdded] = useState(false);
   const game = useLoaderData();
   const { _id, image, title, rating, year, genre, name, email } = game;
   const wishlistGame = {
-    _id,
+    gameId: _id,
     name,
     email,
     image,
@@ -26,44 +26,40 @@ const ReviewDetails = () => {
     currentUserName,
   };
 
-  const handleAddtoWishlist = () => {
+
+  useEffect(() => {
     fetch("http://localhost:5000/wishlist")
       .then((res) => res.json())
       .then((data) => {
-        const isGameInWishlist = data.find(
-          (item) => item._id === game._id && item.currentUser === user?.email
-        );
-        if (isGameInWishlist) {
+        const checkGame = data.find(g => g.title === game.title && g.currentUser === user?.email)
+        if(checkGame){
+          setWishlistAdded(true);
+        }
+      });
+
+  },[user,game]);
+
+  
+  const handleAddToWishlist = () => {
+    fetch("http://localhost:5000/wishlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(wishlistGame),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          setWishlistAdded(true);
           Swal.fire({
-            title: "Oops!",
-            text: "This game is already in your wishlist.",
-            icon: "warning",
-            confirmButtonText: "Got it!",
+            title: "Success!",
+            text: "Game Added to Wishlist Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
             background: "#330066",
             color: "#fff",
           });
-        } else {
-          fetch("http://localhost:5000/wishlist", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(wishlistGame),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                // Successfully added to wishlist
-                Swal.fire({
-                  title: "Success!",
-                  text: "Game Added to Wishlist Successfully",
-                  icon: "success",
-                  confirmButtonText: "Cool",
-                  background: "#330066",
-                  color: "#fff",
-                });
-              }
-            });
         }
       });
   };
@@ -77,13 +73,13 @@ const ReviewDetails = () => {
             <img className="rounded-2xl" src={game.image} alt="" />
             <div className="flex flex-col md:flex-row gap-4">
               <p className="mt-4 text-sm">
-                <span className="font-bold">Reviwed By :</span> {game.name}{" "}
+                <span className="font-bold">Reviewed By:</span> {game.name}
               </p>
               <p className="mt-4 text-sm">
-                <span className="font-bold ">Email :</span> {game.email}{" "}
+                <span className="font-bold">Email:</span> {game.email}
               </p>
               <p className="mt-4 text-sm">
-                <span className="font-bold">Publish Year :</span> {game.year}{" "}
+                <span className="font-bold">Publish Year:</span> {game.year}
               </p>
             </div>
           </div>
@@ -92,23 +88,29 @@ const ReviewDetails = () => {
               <h1 className="text-4xl font-bold">{game.title}</h1>
               {user && (
                 <button
-                  onClick={handleAddtoWishlist}
+                  disabled={wishlistAdded}
+                  onClick={handleAddToWishlist}
                   data-tooltip-id="wishlist-tooltip"
-                  data-tooltip-content={"Add to Wishlist"}
+                  data-tooltip-content={
+                    wishlistAdded ? "Already in Wishlist" : "Add to Wishlist"
+                  }
                 >
-                  <FaHeart className="text-2xl text-purple-500 cursor-pointer" />
+                  <FaHeart
+                    className={`text-2xl cursor-pointer ${
+                      wishlistAdded ? "text-gray-400" : "text-purple-500"
+                    }`}
+                  />
                 </button>
               )}
             </div>
             <p>
-              <span className="font-bold">Review : </span>
-              {game.review}
+              <span className="font-bold">Review:</span> {game.review}
             </p>
             <p>
-              <span className="font-bold">Rating :</span> {game.rating} / 10
+              <span className="font-bold">Rating:</span> {game.rating} / 10
             </p>
             <p>
-              <span className="font-bold">Genre :</span> {game.genre}{" "}
+              <span className="font-bold">Genre:</span> {game.genre}
             </p>
           </div>
         </div>

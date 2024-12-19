@@ -12,6 +12,7 @@ import Watchlist from "../pages/Watchlist/Watchlist";
 import UpdateGameReview from "../pages/UpdateGameReview/UpdateGameReview";
 import ReviewDetails from "../pages/ReviewDetails/ReviewDetails";
 
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +32,8 @@ const routes = createBrowserRouter([
       {
         path: "/reviewdetails/:id",
         element: <ReviewDetails></ReviewDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/games/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/games/${params.id}`),
       },
       {
         path: "/login",
@@ -63,9 +65,12 @@ const routes = createBrowserRouter([
       {
         path: "/updategame/:id",
         element: (
-          <PrivateRoute><UpdateGameReview></UpdateGameReview></PrivateRoute>
+          <PrivateRoute>
+            <UpdateGameReview></UpdateGameReview>
+          </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:5000/games/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/games/${params.id}`),
       },
       {
         path: "/mywatchlist",
@@ -75,6 +80,7 @@ const routes = createBrowserRouter([
             <Watchlist></Watchlist>{" "}
           </PrivateRoute>
         ),
+        loader: ()=> fetch("http://localhost:5000/wishlist")
       },
     ],
   },

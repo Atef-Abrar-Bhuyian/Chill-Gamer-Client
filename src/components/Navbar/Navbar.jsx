@@ -123,24 +123,24 @@ const Navbar = () => {
               <div className="flex gap-2 items-center">
                 {/* Image */}
                 <div className="avatar online">
-                  <div className="w-12 rounded-full">
-                    <Link
-                      to="/profile"
-                      data-tooltip-id="profile-tooltip"
-                      data-tooltip-content={user.displayName}
-                    >
-                      <img referrerPolicy="no-referrer" src={user.photoURL} />
-                    </Link>
+                  <div
+                    data-tooltip-id="profile-tooltip"
+                    data-tooltip-content={user.displayName}
+                    className="w-12 rounded-full"
+                  >
+                    <img className="cursor-pointer" referrerPolicy="no-referrer" src={user.photoURL} />
                   </div>
                 </div>
 
                 {/* Logout btn */}
-                <button
+                <Link
+                to={"/"}
                   onClick={handleLogOut}
+
                   className="btn bg-gradient-to-r from-indigo-800 to-purple-800 shadow-purple-700 shadow-md text-white border-purple-500 hover:border-white"
                 >
                   Logout
-                </button>
+                </Link>
               </div>
             </div>
           ) : (
