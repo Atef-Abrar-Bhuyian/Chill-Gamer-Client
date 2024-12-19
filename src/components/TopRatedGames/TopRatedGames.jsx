@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -11,7 +10,7 @@ const TopRatedGames = () => {
         <Fade>Top-Rated Games</Fade>
       </h1>
       <div className="grid md:grid-cols-3 gap-6">
-        {loadedTopGames?.map((game) => (
+        {loadedTopGames.map((game) => (
           <div
             key={game._id}
             className="card bg-gradient-to-b from-purple-950 to-gray-950 hover:border hover:border-purple-700 hover:shadow-purple-500 hover:shadow-md cursor-pointer text-white"

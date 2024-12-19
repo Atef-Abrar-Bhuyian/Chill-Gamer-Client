@@ -11,8 +11,8 @@ const UpdateGameReview = () => {
     const image = form.image.value;
     const title = form.title.value;
     const review = form.review.value;
-    const rating = form.rating.value;
-    const year = form.year.value;
+    const rating = parseInt(form.rating.value);
+    const year = parseInt(form.year.value);
     const genre = form.genre.value;
     const updatedGame = { image, title, review, rating, year, genre };
 
